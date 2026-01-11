@@ -266,6 +266,9 @@ class BluetoothConnectionManager(
             serverManager.getGattServer(),
             serverManager.getCharacteristic()
         )
+		val current = LocalDateTime.now()
+		print(current)
+		Log.i(TAG, "Testing DateTime")
     }
 
     fun cancelTransfer(transferId: String): Boolean {
