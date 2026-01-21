@@ -224,6 +224,9 @@ class BluetoothGattServerManager(
                     Log.i(TAG, "Server: Received packet from ${device.address}, size: ${value.size} bytes")
                     val packet = BitchatPacket.fromBinaryData(value)
                     if (packet != null) {
+                        Log.i(TAG, "Server: BitPacket Timestamp ${packet.timestamp}, size: ${value.size} bytes")
+                        val currentTimestamp = (System.currentTimeMillis()).toULong()
+                        Log.i(TAG, "Server: Current Timestamp $currentTimestamp")
                         val peerID = packet.senderID.take(8).toByteArray().joinToString("") { "%02x".format(it) }
                         Log.d(TAG, "Server: Parsed packet type ${packet.type} from $peerID")
                         delegate?.onPacketReceived(packet, peerID, device)
