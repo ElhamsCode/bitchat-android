@@ -9,7 +9,9 @@ import android.content.Context
 import android.os.ParcelUuid
 import android.util.Log
 import com.bitchat.android.protocol.BitchatPacket
+import com.bitchat.android.ui.getRSSIColor
 import com.bitchat.android.util.AppConstants
+import com.sun.jdi.connect.spi.TransportService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -224,9 +226,6 @@ class BluetoothGattServerManager(
                     Log.i(TAG, "Server: Received packet from ${device.address}, size: ${value.size} bytes")
                     val packet = BitchatPacket.fromBinaryData(value)
                     if (packet != null) {
-                        Log.i(TAG, "Server: BitPacket Timestamp ${packet.timestamp}, size: ${value.size} bytes")
-                        val currentTimestamp = (System.currentTimeMillis()).toULong()
-                        Log.i(TAG, "Server: Current Timestamp $currentTimestamp")
                         val peerID = packet.senderID.take(8).toByteArray().joinToString("") { "%02x".format(it) }
                         Log.d(TAG, "Server: Parsed packet type ${packet.type} from $peerID")
                         delegate?.onPacketReceived(packet, peerID, device)
