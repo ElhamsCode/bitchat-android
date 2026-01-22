@@ -52,7 +52,7 @@ class BluetoothConnectionManager(
             if (durationSeconds <= 0.0)
                 Log.i(TAG, "onPacketReceived: FAILED CALCULATING TIMEDIFFERENCE")
 
-            val throughput = packet.payload.size.toDouble() / durationSeconds
+            val throughput = packet.payload.size.toDouble() / durationSeconds.toDouble()
             val kbPerSec = throughput / 1024.0
             val mbPerSec = kbPerSec / 1024.0
 
