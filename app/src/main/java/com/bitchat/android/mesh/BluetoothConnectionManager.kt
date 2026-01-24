@@ -45,19 +45,31 @@ class BluetoothConnectionManager(
         override fun onPacketReceived(packet: BitchatPacket, peerID: String, device: BluetoothDevice?) {
             Log.d(TAG, "onPacketReceived: Packet received from ${device?.address} ($peerID)")
 
-<<<<<<< HEAD
             Log.i(TAG, "onPacketReceived: BitPacket Timestamp ${packet.timestamp}, size: ${packet.payload.size} bytes")
-            val currentTimestamp = SystemClock.elapsedRealtime().toULong()
+            val currentTimestamp = System.currentTimeMillis().toULong()
             Log.i(TAG, "onPacketReceived: Current Timestamp $currentTimestamp")
 
-=======
->>>>>>> parent of 214d85c (added throughput again)
+            val differenceMilliSeconds =
+                (currentTimestamp - packet.timestamp)
+            if (differenceMilliSeconds <= 0u)
+                Log.i(TAG, "onPacketReceived: FAILED CALCULATING TIMEDIFFERENCE")
+            else
+                Log.i(TAG, "durationSeconds: $differenceMilliSeconds")
+
+            val throughput = packet.payload.size * 1000.0 / differenceMilliSeconds.toDouble()
+            val kbPerSec = throughput / 1024.0
+            val mbPerSec = kbPerSec / 1024.0
+
+            //Log.i(TAG, "onPacketReceived: Throughput Bytes/s: $throughput Bytes/s")
+            //Log.i(TAG, "Throughput kBytes/s: $kbPerSec kBytes/s, RSSI: ")
+            //Log.i(TAG, "onPacketReceived: Throughput mBytes/s: $mbPerSec mBytes/s")
+
             device?.let { bluetoothDevice ->
                 // Get current RSSI for this device and update if available
                 val currentRSSI = connectionTracker.getBestRSSI(bluetoothDevice.address)
                 if (currentRSSI != null) {
                     delegate?.onRSSIUpdated(bluetoothDevice.address, currentRSSI)
-                    Log.i(TAG, "CURRENT RSSI: ${currentRSSI}")
+                    Log.i(TAG, "Throughput kBytes/s: $kbPerSec kBytes/s, PacketSize: ${packet.payload.size}, RSSI: ${currentRSSI}")
                 }
             }
 

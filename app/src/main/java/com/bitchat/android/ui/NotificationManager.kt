@@ -159,7 +159,7 @@ class NotificationManager(
             senderPeerID = senderPeerID,
             senderNickname = senderNickname,
             messageContent = messageContent,
-            timestamp = SystemClock.elapsedRealtime()
+            timestamp = System.currentTimeMillis()
         )
 
         // Add to pending notifications for this sender
@@ -175,7 +175,7 @@ class NotificationManager(
     }
 
     fun showActiveUserNotification(peers: List<String>) {
-        val currentTime = SystemClock.elapsedRealtime()
+        val currentTime = System.currentTimeMillis()
         val activePeerNotificationIntervalExceeded =
           (currentTime - notificationIntervalManager.lastNetworkNotificationTime) > ACTIVE_PEERS_NOTIFICATION_TIME_INTERVAL
         val newPeers = peers - notificationIntervalManager.recentlySeenPeers
@@ -311,7 +311,7 @@ class NotificationManager(
           .setPriority(NotificationCompat.PRIORITY_MIN)
           .setCategory(NotificationCompat.CATEGORY_MESSAGE)
           .setShowWhen(true)
-          .setWhen(SystemClock.elapsedRealtime())
+          .setWhen(System.currentTimeMillis())
 
         notificationManager.notify(ACTIVE_PEERS_NOTIFICATION_ID, builder.build())
         Log.d(TAG, "Displayed notification for $contentTitle with ID $ACTIVE_PEERS_NOTIFICATION_ID")
@@ -419,7 +419,7 @@ class NotificationManager(
             geohash = geohash,
             senderNickname = senderNickname,
             messageContent = messageContent,
-            timestamp = SystemClock.elapsedRealtime(),
+            timestamp = System.currentTimeMillis(),
             isMention = isMention,
             isFirstMessage = isFirstMessage,
             locationName = locationName
@@ -644,7 +644,7 @@ class NotificationManager(
             senderPeerID = senderPeerID ?: meshMentionKey,
             senderNickname = senderNickname,
             messageContent = messageContent,
-            timestamp = SystemClock.elapsedRealtime()
+            timestamp = System.currentTimeMillis()
         )
 
         // Add to pending notifications for mesh mentions

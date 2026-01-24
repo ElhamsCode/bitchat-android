@@ -50,22 +50,9 @@ class PacketProcessor(private val myPeerID: String) {
         Log.d(TAG, "🎭 Created packet actor for peer: ${formatPeerForLog(peerID)}")
         try {
             for (packet in channel) {
-                // Packeteigenschaften herausfinden
-                val packetBytes = packet.packet.payload.size
-                val startTime = SystemClock.elapsedRealtime()
-
-                // Verarbeiten des Packets
                 Log.d(TAG, "📦 Processing packet type ${packet.packet.type} from ${formatPeerForLog(peerID)} (serialized)")
                 handleReceivedPacket(packet)
                 Log.d(TAG, "Completed packet type ${packet.packet.type} from ${formatPeerForLog(peerID)}")
-
-                // Durchsatzmessung
-
-                val endTime = SystemClock.elapsedRealtime()
-                val diffTime = endTime - startTime
-                val throughput = packetBytes.toDouble() * 1000 / diffTime.toDouble()
-                Log.i(TAG, "Timestamp $endTime - $startTime = $diffTime")
-                Log.i(TAG, "Performance:  Throughput: $throughput Bytes/s")
             }
         } finally {
             Log.d(TAG, "🎭 Packet actor for ${formatPeerForLog(peerID)} terminated")

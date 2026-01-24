@@ -82,7 +82,7 @@ class StoreForwardManager {
         
         val storedMessage = StoredMessage(
             packet = packet,
-            timestamp = SystemClock.elapsedRealtime(),
+            timestamp = System.currentTimeMillis(),
             messageID = messageID,
             isForFavorite = isForFavorite
         )
