@@ -1,5 +1,6 @@
 package com.bitchat.android.mesh
 
+import android.os.SystemClock
 import android.bluetooth.*
 import android.content.Context
 import android.util.Log
@@ -45,7 +46,7 @@ class BluetoothConnectionManager(
             Log.d(TAG, "onPacketReceived: Packet received from ${device?.address} ($peerID)")
 
             Log.i(TAG, "onPacketReceived: BitPacket Timestamp ${packet.timestamp}, size: ${packet.payload.size} bytes")
-            val currentTimestamp = (System.currentTimeMillis()).toULong()
+            val currentTimestamp = SystemClock.elapsedRealtime().toULong()
             Log.i(TAG, "onPacketReceived: Current Timestamp $currentTimestamp")
 
             device?.let { bluetoothDevice ->
