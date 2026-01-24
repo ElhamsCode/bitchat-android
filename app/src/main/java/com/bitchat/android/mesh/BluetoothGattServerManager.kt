@@ -11,7 +11,6 @@ import android.util.Log
 import com.bitchat.android.protocol.BitchatPacket
 import com.bitchat.android.ui.getRSSIColor
 import com.bitchat.android.util.AppConstants
-import com.sun.jdi.connect.spi.TransportService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
