@@ -44,11 +44,16 @@ class BluetoothConnectionManager(
         override fun onPacketReceived(packet: BitchatPacket, peerID: String, device: BluetoothDevice?) {
             Log.d(TAG, "onPacketReceived: Packet received from ${device?.address} ($peerID)")
 
+            Log.i(TAG, "onPacketReceived: BitPacket Timestamp ${packet.timestamp}, size: ${packet.payload.size} bytes")
+            val currentTimestamp = (System.currentTimeMillis()).toULong()
+            Log.i(TAG, "onPacketReceived: Current Timestamp $currentTimestamp")
+
             device?.let { bluetoothDevice ->
                 // Get current RSSI for this device and update if available
                 val currentRSSI = connectionTracker.getBestRSSI(bluetoothDevice.address)
                 if (currentRSSI != null) {
                     delegate?.onRSSIUpdated(bluetoothDevice.address, currentRSSI)
+                    Log.i(TAG, "CURRENT RSSI: ${currentRSSI}")
                 }
             }
 
