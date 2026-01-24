@@ -1,5 +1,6 @@
 package com.bitchat.android.protocol
 
+import android.os.SystemClock
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.nio.ByteBuffer
