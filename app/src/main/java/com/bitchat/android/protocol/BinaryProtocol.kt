@@ -72,7 +72,7 @@ data class BitchatPacket(
         type = type,
         senderID = hexStringToByteArray(senderID),
         recipientID = null,
-        timestamp = (System.currentTimeMillis()).toULong(),
+        timestamp = SystemClock.elapsedRealtime().toULong(),
         payload = payload,
         signature = null,
         ttl = ttl

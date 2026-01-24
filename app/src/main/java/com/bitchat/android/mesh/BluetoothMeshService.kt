@@ -199,7 +199,7 @@ class BluetoothMeshService(private val context: Context) {
                     type = MessageType.NOISE_HANDSHAKE.value,
                     senderID = hexStringToByteArray(myPeerID),
                     recipientID = hexStringToByteArray(peerID),
-                    timestamp = System.currentTimeMillis().toULong(),
+                    timestamp = SystemClock.elapsedRealtime().toULong(),
                     payload = response,
                     ttl = MAX_TTL
                 )
@@ -312,7 +312,7 @@ class BluetoothMeshService(private val context: Context) {
                             type = MessageType.NOISE_HANDSHAKE.value,
                             senderID = hexStringToByteArray(myPeerID),
                             recipientID = hexStringToByteArray(peerID),
-                            timestamp = System.currentTimeMillis().toULong(),
+                            timestamp = SystemClock.elapsedRealtime().toULong(),
                             payload = handshakeData,
                             ttl = MAX_TTL
                         )
@@ -679,7 +679,7 @@ class BluetoothMeshService(private val context: Context) {
                 type = MessageType.MESSAGE.value,
                 senderID = hexStringToByteArray(myPeerID),
                 recipientID = SpecialRecipients.BROADCAST,
-                timestamp = System.currentTimeMillis().toULong(),
+                timestamp = SystemClock.elapsedRealtime().toULong(),
                 payload = content.toByteArray(Charsets.UTF_8),
                 signature = null,
                 ttl = MAX_TTL
@@ -711,7 +711,7 @@ class BluetoothMeshService(private val context: Context) {
                 type = MessageType.FILE_TRANSFER.value,
                 senderID = hexStringToByteArray(myPeerID),
                 recipientID = SpecialRecipients.BROADCAST,
-                timestamp = System.currentTimeMillis().toULong(),
+                timestamp = SystemClock.elapsedRealtime().toULong(),
                 payload = payload,
                 signature = null,
                 ttl = MAX_TTL
@@ -767,7 +767,7 @@ class BluetoothMeshService(private val context: Context) {
                             type = MessageType.NOISE_ENCRYPTED.value,
                             senderID = hexStringToByteArray(myPeerID),
                             recipientID = hexStringToByteArray(recipientPeerID),
-                            timestamp = System.currentTimeMillis().toULong(),
+                            timestamp = SystemClock.elapsedRealtime().toULong(),
                             payload = encrypted,
                             signature = null,
                             ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS
@@ -849,7 +849,7 @@ class BluetoothMeshService(private val context: Context) {
                         type = MessageType.NOISE_ENCRYPTED.value,
                         senderID = hexStringToByteArray(myPeerID),
                         recipientID = hexStringToByteArray(recipientPeerID),
-                        timestamp = System.currentTimeMillis().toULong(),
+                        timestamp = SystemClock.elapsedRealtime().toULong(),
                         payload = encrypted,
                         signature = null,
                         ttl = MAX_TTL
@@ -920,7 +920,7 @@ class BluetoothMeshService(private val context: Context) {
                     type = MessageType.NOISE_ENCRYPTED.value,
                     senderID = hexStringToByteArray(myPeerID),
                     recipientID = hexStringToByteArray(recipientPeerID),
-                    timestamp = System.currentTimeMillis().toULong(),
+                    timestamp = SystemClock.elapsedRealtime().toULong(),
                     payload = encrypted,
                     signature = null,
                     ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS // Same TTL as iOS messageTTL

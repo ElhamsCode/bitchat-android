@@ -43,7 +43,7 @@ object NostrEmbeddedBitChat {
                 type = MessageType.NOISE_ENCRYPTED.value,
                 senderID = hexStringToByteArray(senderPeerID),
                 recipientID = hexStringToByteArray(recipientIDHex),
-                timestamp = System.currentTimeMillis().toULong(),
+                timestamp = SystemClock.elapsedRealtime().toULong(),
                 payload = payload,
                 signature = null,
                 ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS
@@ -83,7 +83,7 @@ object NostrEmbeddedBitChat {
                 type = MessageType.NOISE_ENCRYPTED.value,
                 senderID = hexStringToByteArray(senderPeerID),
                 recipientID = hexStringToByteArray(recipientIDHex),
-                timestamp = System.currentTimeMillis().toULong(),
+                timestamp = SystemClock.elapsedRealtime().toULong(),
                 payload = payload,
                 signature = null,
                 ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS
@@ -120,7 +120,7 @@ object NostrEmbeddedBitChat {
                 type = MessageType.NOISE_ENCRYPTED.value,
                 senderID = hexStringToByteArray(senderPeerID),
                 recipientID = null, // No recipient for geohash DMs
-                timestamp = System.currentTimeMillis().toULong(),
+                timestamp = SystemClock.elapsedRealtime().toULong(),
                 payload = payload,
                 signature = null,
                 ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS
@@ -155,7 +155,7 @@ object NostrEmbeddedBitChat {
                 type = MessageType.NOISE_ENCRYPTED.value,
                 senderID = hexStringToByteArray(senderPeerID),
                 recipientID = null, // No recipient for geohash DMs
-                timestamp = System.currentTimeMillis().toULong(),
+                timestamp = SystemClock.elapsedRealtime().toULong(),
                 payload = payload,
                 signature = null,
                 ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS
