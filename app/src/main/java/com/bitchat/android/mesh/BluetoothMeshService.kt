@@ -1,6 +1,5 @@
 package com.bitchat.android.mesh
 
-import android.os.SystemClock
 import android.content.Context
 import android.util.Log
 import com.bitchat.android.crypto.EncryptionService

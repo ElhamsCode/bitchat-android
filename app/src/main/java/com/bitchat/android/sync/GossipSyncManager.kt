@@ -1,6 +1,5 @@
 package com.bitchat.android.sync
 
-import android.os.SystemClock
 import android.util.Log
 import com.bitchat.android.mesh.BluetoothPacketBroadcaster
 import com.bitchat.android.model.RequestSyncPacket

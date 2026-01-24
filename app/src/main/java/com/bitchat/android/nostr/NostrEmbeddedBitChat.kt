@@ -1,6 +1,5 @@
 package com.bitchat.android.nostr
 
-import android.os.SystemClock
 import android.util.Base64
 import android.util.Log
 import com.bitchat.android.model.PrivateMessagePacket
