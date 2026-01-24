@@ -116,7 +116,7 @@ class GossipSyncManager(
             }
         } else if (isAnnouncement) {
             // Ignore stale announcements older than STALE_PEER_TIMEOUT
-            val now = System.currentTimeMillis()
+            val now = SystemClock.elapsedRealtime()
             val age = now - packet.timestamp.toLong()
             if (age > com.bitchat.android.util.AppConstants.Mesh.STALE_PEER_TIMEOUT_MS) {
                 Log.d(TAG, "Ignoring stale ANNOUNCE (age=${age}ms > ${com.bitchat.android.util.AppConstants.Mesh.STALE_PEER_TIMEOUT_MS}ms)")

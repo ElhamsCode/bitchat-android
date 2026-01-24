@@ -1,5 +1,6 @@
 package com.bitchat.android.mesh
 
+import android.os.SystemClock
 import android.util.Log
 import com.bitchat.android.protocol.BitchatPacket
 import com.bitchat.android.protocol.MessageType
@@ -81,7 +82,7 @@ class StoreForwardManager {
         
         val storedMessage = StoredMessage(
             packet = packet,
-            timestamp = System.currentTimeMillis(),
+            timestamp = SystemClock.elapsedRealtime(),
             messageID = messageID,
             isForFavorite = isForFavorite
         )
