@@ -189,7 +189,7 @@ class MessageHandler(private val myPeerID: String, private val appContext: andro
                     type = MessageType.NOISE_ENCRYPTED.value,
                     senderID = hexStringToByteArray(myPeerID),
                     recipientID = hexStringToByteArray(senderPeerID),
-                    timestamp = SystemClock.elapsedRealtime().toULong(),
+                    timestamp = System.currentTimeMillis().toULong(),
                     payload = encryptedPayload,
                     signature = null,
                     ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS // Same TTL as iOS messageTTL
@@ -316,7 +316,7 @@ class MessageHandler(private val myPeerID: String, private val appContext: andro
                     type = MessageType.NOISE_HANDSHAKE.value,
                     senderID = hexStringToByteArray(myPeerID),
                     recipientID = hexStringToByteArray(peerID),
-                    timestamp = SystemClock.elapsedRealtime().toULong(),
+                    timestamp = System.currentTimeMillis().toULong(),
                     payload = response,
                     signature = null,
                     ttl = com.bitchat.android.util.AppConstants.MESSAGE_TTL_HOPS // Same TTL as iOS

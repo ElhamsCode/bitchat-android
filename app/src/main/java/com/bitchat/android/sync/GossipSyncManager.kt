@@ -140,7 +140,7 @@ class GossipSyncManager(
         val packet = BitchatPacket(
             type = MessageType.REQUEST_SYNC.value,
             senderID = hexStringToByteArray(myPeerID),
-            timestamp = SystemClock.elapsedRealtime().toULong(),
+            timestamp = System.currentTimeMillis().toULong(),
             payload = payload,
             ttl = com.bitchat.android.util.AppConstants.SYNC_TTL_HOPS // neighbors only
         )
@@ -156,7 +156,7 @@ class GossipSyncManager(
             type = MessageType.REQUEST_SYNC.value,
             senderID = hexStringToByteArray(myPeerID),
             recipientID = hexStringToByteArray(peerID),
-            timestamp = SystemClock.elapsedRealtime().toULong(),
+            timestamp = System.currentTimeMillis().toULong(),
             payload = payload,
             ttl = com.bitchat.android.util.AppConstants.SYNC_TTL_HOPS // neighbor only
         )
