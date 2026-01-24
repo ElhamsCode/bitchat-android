@@ -58,11 +58,6 @@ class BluetoothConnectionManager(
 
             val throughput = packet.payload.size * 1000.0 / differenceMilliSeconds.toDouble()
             val kbPerSec = throughput / 1024.0
-            val mbPerSec = kbPerSec / 1024.0
-
-            //Log.i(TAG, "onPacketReceived: Throughput Bytes/s: $throughput Bytes/s")
-            //Log.i(TAG, "Throughput kBytes/s: $kbPerSec kBytes/s, RSSI: ")
-            //Log.i(TAG, "onPacketReceived: Throughput mBytes/s: $mbPerSec mBytes/s")
 
             device?.let { bluetoothDevice ->
                 // Get current RSSI for this device and update if available
